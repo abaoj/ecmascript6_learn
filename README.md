@@ -209,4 +209,5 @@ animals(<span class="hljs-string">'cat'</span>, <span class="hljs-string">'dog'<
 <h3>总结</h3>
 <p>以上就是ES6最常用的一些语法，可以说这20%的语法，在ES6的日常使用中占了80%...</p>
 
-        
+<h3>文章来源</h3>
+<p>http://www.jianshu.com/p/ebfeb687eb70</p>
