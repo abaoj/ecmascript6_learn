@@ -1,5 +1,4 @@
 
-          <div class="image-package">
 <img src="http://upload-images.jianshu.io/upload_images/1504317-805392e6d4ad6f43.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" data-original-src="http://upload-images.jianshu.io/upload_images/1504317-805392e6d4ad6f43.jpg?imageMogr2/auto-orient/strip%7CimageView2/2" style="cursor: zoom-in;"><br><div class="image-caption"></div>
 </div><p><br>ECMAScript 6（以下简称ES6）是JavaScript语言的下一代标准。因为当前版本的ES6是在2015年发布的，所以又称ECMAScript 2015。</p>
 <p>也就是说，ES6就是ES2015。</p>
