@@ -102,3 +102,5 @@ import * as math from './test.js'
 math.add(1, 2)
 math.subtract(1, 2)
 
+参考内容：
+http://www.cnblogs.com/axl234/p/5795337.html
