@@ -1,12 +1,4 @@
 
-<!--done-->
-<div id="topics">
-	<div class="post">
-		<h1 class="postTitle">
-			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/axl234/p/5795337.html">ES6的模块化</a>
-		</h1>
-		<div class="clear"></div>
-		<div class="postBody">
 			<div id="cnblogs_post_body"><p>在之前的 javascript 中一直是没有模块系统的，前辈们为了解决这些问题，提出了各种规范, 最主要的有CommonJS和AMD两种。前者用于服务器，后者用于浏览器。而 ES6 中提供了简单的模块系统，完全可以取代现有的CommonJS和AMD规范，成为浏览器和服务器通用的模块解决方案。</p>
 <h2 id="基本用法">基本用法</h2>
 <p>es6 中新增了两个命令&nbsp;<code>export</code>&nbsp;和&nbsp;<code>import</code>&nbsp;,&nbsp;<code>export</code>&nbsp;命令用于规定模块的对外接口，<code>import</code>&nbsp;命令用于输入其他模块提供的功能。</p>
