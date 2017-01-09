@@ -1,0 +1,292 @@
+
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/axl234/p/5795337.html">ES6的模块化</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>在之前的 javascript 中一直是没有模块系统的，前辈们为了解决这些问题，提出了各种规范, 最主要的有CommonJS和AMD两种。前者用于服务器，后者用于浏览器。而 ES6 中提供了简单的模块系统，完全可以取代现有的CommonJS和AMD规范，成为浏览器和服务器通用的模块解决方案。</p>
+<h2 id="基本用法">基本用法</h2>
+<p>es6 中新增了两个命令&nbsp;<code>export</code>&nbsp;和&nbsp;<code>import</code>&nbsp;,&nbsp;<code>export</code>&nbsp;命令用于规定模块的对外接口，<code>import</code>&nbsp;命令用于输入其他模块提供的功能。</p>
+<blockquote>
+<p>一个模块就是一个独立的文件。该文件内部的所有变量，外部无法获取。如果你希望外部能够读取模块内部的某个 变量，就必须使用export关键字输出该变量。下面是一个JS文件，里面使用export命令输出变量。</p>
+</blockquote>
+<table>
+<tbody>
+<tr>
+<td class="gutter">
+<pre><span class="line">1<br><span class="line">2<br><span class="line">3<br><span class="line">4<br><span class="line">5<br><span class="line">6<br><span class="line">7<br><span class="line">8<br><span class="line">9<br></span></span></span></span></span></span></span></span></span></pre>
+</td>
+<td class="code">
+<pre><span class="line"><span class="comment">// math.js<br><span class="line"><br><span class="line"><span class="keyword">export <span class="keyword">const add = <span class="function"><span class="keyword">function (<span class="params">a, b) {<br><span class="line">    <span class="keyword">return a + b<br><span class="line">}<br><span class="line"><br><span class="line"><span class="keyword">export <span class="keyword">const subtract = <span class="function"><span class="keyword">function (<span class="params">a, b) {<br><span class="line">    <span class="keyword">return a - b<br><span class="line">}<br></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>使用export命令定义了模块的对外接口以后，其他JS文件就可以通过import命令加载这个模块（文件）。</p>
+</blockquote>
+<table>
+<tbody>
+<tr>
+<td class="gutter">
+<pre><span class="line">1<br><span class="line">2<br><span class="line">3<br><span class="line">4<br><span class="line">5<br></span></span></span></span></span></pre>
+</td>
+<td class="code">
+<pre><span class="line"><span class="comment">// main.js<br><span class="line"><span class="keyword">import { add, subtract } <span class="keyword">from <span class="string">'./test.js'<br><span class="line"><br><span class="line">add(<span class="number">1, <span class="number">2)<br><span class="line">substract(<span class="number">3, <span class="number">2)<br></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="export-详细用法">export 详细用法</h2>
+<p>上面介绍了模块化最基础的用法，export 不止可以导出函数，还可以导出对象，类，字符串等等</p>
+<table>
+<tbody>
+<tr>
+<td class="gutter">
+<pre><span class="line">1<br><span class="line">2<br><span class="line">3<br><span class="line">4<br><span class="line">5<br><span class="line">6<br><span class="line">7<br><span class="line">8<br><span class="line">9<br><span class="line">10<br></span></span></span></span></span></span></span></span></span></span></pre>
+</td>
+<td class="code">
+<pre><span class="line"><span class="keyword">export <span class="keyword">const obj = {<br><span class="line">    test1: <span class="string">''<br><span class="line">}<br><span class="line"><br><span class="line"><span class="keyword">export <span class="keyword">const test = <span class="string">''<br><span class="line"><br><span class="line">exrpot <span class="class"><span class="keyword">class <span class="title">Test {<br><span class="line">    constuctor() {<br><span class="line">    }<br><span class="line">}<br></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p>export的写法，除了像上面这样，还有另外一种。</p>
+<table>
+<tbody>
+<tr>
+<td class="gutter">
+<pre><span class="line">1<br><span class="line">2<br><span class="line">3<br><span class="line">4<br><span class="line">5<br><span class="line">6<br><span class="line">7<br><span class="line">8<br></span></span></span></span></span></span></span></span></pre>
+</td>
+<td class="code">
+<pre><span class="line"><span class="keyword">let a = <span class="number">1<br><span class="line"><span class="keyword">let b = <span class="number">2<br><span class="line"><span class="keyword">let c = <span class="number">3<br><span class="line"><span class="keyword">export {<br><span class="line">    a,<br><span class="line">    b,<br><span class="line">    c<br><span class="line">}<br></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p>上面代码在export命令后面，使用大括号指定所要输出的一组变量。它与前一种写法是等价的，但是应该优先考虑使用这种写法。因为这样就可以在脚本尾部，一眼看清楚输出了哪些变量。</p>
+<p>通过 as 改变输出名称</p>
+<table>
+<tbody>
+<tr>
+<td class="gutter">
+<pre><span class="line">1<br><span class="line">2<br><span class="line">3<br><span class="line">4<br><span class="line">5<br><span class="line">6<br><span class="line">7<br><span class="line">8<br><span class="line">9<br></span></span></span></span></span></span></span></span></span></pre>
+</td>
+<td class="code">
+<pre><span class="line"><span class="comment">// test.js<br><span class="line"><span class="keyword">let a = <span class="number">1<br><span class="line"><span class="keyword">let b = <span class="number">2<br><span class="line"><span class="keyword">let c = <span class="number">3<br><span class="line"><span class="keyword">export {<br><span class="line">    a <span class="keyword">as test,<br><span class="line">    b,<br><span class="line">    c<br><span class="line">}<br></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr>
+<td class="gutter">
+<pre><span class="line">1<br></span></pre>
+</td>
+<td class="code">
+<pre><span class="line"><span class="keyword">import { test, b, c} <span class="keyword">from <span class="string">'./test.js' <span class="comment">// 改变命名后只能写 as 后的命名<br></span></span></span></span></span></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p>上面啊的写法中，<code>import</code>&nbsp;中需要指定加载的变量名或函数名，否则无法加载。但是，用户肯定希望快速上手，未必愿意阅读文档，去了解模块有哪些属性和方法。</p>
+<p><code>export default</code>&nbsp;指定默认输出, import 无需知道变量名就可以直接使用</p>
+<table>
+<tbody>
+<tr>
+<td class="gutter">
+<pre><span class="line">1<br><span class="line">2<br><span class="line">3<br><span class="line">4<br><span class="line">5<br></span></span></span></span></span></pre>
+</td>
+<td class="code">
+<pre><span class="line"><span class="comment">// test.js<br><span class="line"><br><span class="line"><span class="keyword">export <span class="keyword">default <span class="function"><span class="keyword">function (<span class="params">) {<br><span class="line">    <span class="built_in">console.log(<span class="string">'hello world')<br><span class="line">}<br></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr>
+<td class="gutter">
+<pre><span class="line">1<br><span class="line">2<br><span class="line">3<br></span></span></span></pre>
+</td>
+<td class="code">
+<pre><span class="line"><span class="keyword">import say <span class="keyword">from <span class="string">'./test.js' <span class="comment">// 这里可以指定任意变量名<br><span class="line"><br><span class="line">say() <span class="comment">// hello world<br></span></span></span></span></span></span></span></span></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p>有了export default命令，加载模块时就非常直观了，以一些常用的模块为例</p>
+<table>
+<tbody>
+<tr>
+<td class="gutter">
+<pre><span class="line">1<br><span class="line">2<br><span class="line">3<br></span></span></span></pre>
+</td>
+<td class="code">
+<pre><span class="line"><span class="keyword">import $ <span class="keyword">from <span class="string">'jQuery'   <span class="comment">// 加载jQuery 库<br><span class="line"><span class="keyword">import _ <span class="keyword">from <span class="string">'lodash'   <span class="comment">// 加载 lodash<br><span class="line"><span class="keyword">import moment <span class="keyword">from <span class="string">'moment' <span class="comment">// 加载 moment<br></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="import-详细用法">import 详细用法</h2>
+<p><code>import</code>&nbsp;为加载模块的命令，基础使用方式和之前一样</p>
+<table>
+<tbody>
+<tr>
+<td class="gutter">
+<pre><span class="line">1<br><span class="line">2<br><span class="line">3<br><span class="line">4<br><span class="line">5<br><span class="line">6<br></span></span></span></span></span></span></pre>
+</td>
+<td class="code">
+<pre><span class="line"><span class="comment">// main.js<br><span class="line"><span class="keyword">import { add, subtract } <span class="keyword">from <span class="string">'./test'<br><span class="line"><br><span class="line"><span class="comment">// 对于export default 导出的<br><span class="line"><br><span class="line"><span class="keyword">import say <span class="keyword">from <span class="string">'./test'<br></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="通过-as-命令修改导入的变量名">通过 as 命令修改导入的变量名</h3>
+<table>
+<tbody>
+<tr>
+<td class="gutter">
+<pre><span class="line">1<br><span class="line">2<br><span class="line">3<br></span></span></span></pre>
+</td>
+<td class="code">
+<pre><span class="line"><span class="keyword">import {add <span class="keyword">as sum, subtract} <span class="keyword">from <span class="string">'./test'<br><span class="line"><br><span class="line">sum (<span class="number">1, <span class="number">2)<br></span></span></span></span></span></span></span></span></span></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="加载模块的全部">加载模块的全部</h3>
+<p>除了指定输出变量名或者&nbsp;<code>export.default</code>&nbsp;定义的导入， 还可以通过&nbsp;<code>*</code>&nbsp;号加载模块的全部.</p>
+<table>
+<tbody>
+<tr>
+<td class="gutter">
+<pre><span class="line">1<br><span class="line">2<br><span class="line">3<br><span class="line">4<br><span class="line">5<br><span class="line">6<br><span class="line">7<br><span class="line">8<br><span class="line">9<br></span></span></span></span></span></span></span></span></span></pre>
+</td>
+<td class="code">
+<pre><span class="line"><span class="comment">// math.js<br><span class="line"><br><span class="line"><span class="keyword">export <span class="keyword">const add = <span class="function"><span class="keyword">function (<span class="params">a, b) {<br><span class="line">    <span class="keyword">return a + b<br><span class="line">}<br><span class="line"><br><span class="line"><span class="keyword">export <span class="keyword">const subtract = <span class="function"><span class="keyword">function (<span class="params">a, b) {<br><span class="line">    <span class="keyword">return a - b<br><span class="line">}<br></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr>
+<td class="gutter">
+<pre><span class="line">1<br><span class="line">2<br><span class="line">3<br><span class="line">4<br></span></span></span></span></pre>
+</td>
+<td class="code">
+<pre><span class="line"><span class="keyword">import * <span class="keyword">as math <span class="keyword">from <span class="string">'./test.js'<br><span class="line"><br><span class="line">math.add(<span class="number">1, <span class="number">2)<br><span class="line">math.subtract(<span class="number">1, <span class="number">2)<br></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="开始使用-ES6">开始使用 ES6</h2>
+<p>上面介绍了，es6 中模块的使用方式，但是现在es6的模块化，无论在浏览器端还是 node.js 上都没有得到很好的支持，所以需要，一些转码的工具。使我们可以用es6的方式来编码，最后输出es5的代码。</p>
+<p>这里推荐一款基于 es6 模块化方式的打包神器&nbsp;<a href="http://rollupjs.org/" rel="external" target="_blank">rollup</a>，它使用&nbsp;<code>Tree-shaking</code>&nbsp;的技术打包，基本可以做到零冗余的代码，而且配置简单，打包速度也够快。</p>
+<h3 id="安装-rollup">安装 rollup</h3>
+<p>首先在&nbsp;<code>package.json</code>&nbsp;中加上&nbsp;<code>rollup</code>&nbsp;打包依赖的包</p>
+<table>
+<tbody>
+<tr>
+<td class="gutter">
+<pre><span class="line">1<br><span class="line">2<br><span class="line">3<br><span class="line">4<br><span class="line">5<br><span class="line">6<br><span class="line">7<br><span class="line">8<br><span class="line">9<br><span class="line">10<br><span class="line">11<br><span class="line">12<br></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+</td>
+<td class="code">
+<pre><span class="line">{<br><span class="line">    // ...<br><span class="line">    "devDependencies": {<br><span class="line">        "babel-core": "^6.13.0",<br><span class="line">        "babel-preset-es2015-rollup": "^1.1.1",<br><span class="line">        "rollup": "^0.34.3",<br><span class="line">        "rollup-plugin-babel": "^2.6.1",<br><span class="line">        "rollup-plugin-commonjs": "^3.3.1",<br><span class="line">        "rollup-plugin-node-resolve": "^2.0.0",<br><span class="line">        "rollup-plugin-uglify": "^1.0.1"<br><span class="line">    }<br><span class="line">}<br></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="编写打包程序">编写打包程序</h3>
+<p>下面是我的打包程序</p>
+<table>
+<tbody>
+<tr>
+<td class="gutter">
+<pre><span class="line">1<br><span class="line">2<br><span class="line">3<br><span class="line">4<br><span class="line">5<br><span class="line">6<br><span class="line">7<br><span class="line">8<br><span class="line">9<br><span class="line">10<br><span class="line">11<br><span class="line">12<br><span class="line">13<br><span class="line">14<br><span class="line">15<br><span class="line">16<br><span class="line">17<br><span class="line">18<br><span class="line">19<br><span class="line">20<br><span class="line">21<br><span class="line">22<br><span class="line">23<br><span class="line">24<br><span class="line">25<br><span class="line">26<br></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+</td>
+<td class="code">
+<pre><span class="line"><span class="comment">// build.js<br><span class="line"><span class="keyword">var rollup = <span class="built_in">require(<span class="string">'rollup');<br><span class="line"><span class="keyword">var babel = <span class="built_in">require(<span class="string">'rollup-plugin-babel');         <span class="comment">// babel 插件<br><span class="line"><span class="keyword">var uglify = <span class="built_in">require(<span class="string">'rollup-plugin-uglify');       <span class="comment">// js 混淆压缩插件<br><span class="line"><span class="keyword">var npm = <span class="built_in">require(<span class="string">'rollup-plugin-node-resolve');    <span class="comment">// 使用第三方包依赖<br><span class="line"><span class="keyword">var commonjs = <span class="built_in">require(<span class="string">'rollup-plugin-commonjs');   <span class="comment">// CommonJS模块转换为ES6<br><span class="line">rollup.rollup({<br><span class="line">    entry: <span class="string">'src/index.js', <span class="comment">//入口文件<br><span class="line">    plugins: [  <span class="comment">// 插件配置<br><span class="line">        npm({ jsnext: <span class="literal">true, main: <span class="literal">true }),<br><span class="line">        commonjs(),<br><span class="line">        uglify(),<br><span class="line">        babel({<br><span class="line">            exclude: <span class="string">'node_modules/**',<br><span class="line">            presets: [ <span class="string">"es2015-rollup" ]<br><span class="line">        })<br><span class="line">    ]<br><span class="line">}).then(<span class="function"><span class="keyword">function(<span class="params">bundle) {<br><span class="line">    <span class="comment">// 打包之后生成一个 `budble` 把它写入文件即可<br><span class="line">    bundle.write({<br><span class="line">        <span class="comment">// 转化格式 cjs 代表 commonJs, 还支持 iife, amd, umd, es6 ....<br><span class="line">        format: <span class="string">'cjs', <br><span class="line">        banner: <span class="string">'si_log.js v0.1.1',     <span class="comment">//文件顶部的广告<br><span class="line">        dest: <span class="string">'dist/si_log_common.js'<br><span class="line">    });<br><span class="line">});<br></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h3 id="在-package-json-中加上执行脚本">在&nbsp;<code>package.json</code>&nbsp;中加上执行脚本</h3>
+<table>
+<tbody>
+<tr>
+<td class="gutter">
+<pre><span class="line">1<br><span class="line">2<br><span class="line">3<br><span class="line">4<br><span class="line">5<br><span class="line">6<br><span class="line">7<br></span></span></span></span></span></span></span></pre>
+</td>
+<td class="code">
+<pre><span class="line">{<br><span class="line">    // ...<br><span class="line">    "scripts": {<br><span class="line">        // ...<br><span class="line">        "build": "node build.js"<br><span class="line">    },<br><span class="line">}<br></span></span></span></span></span></span></span></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p>然后，执行命令</p>
+<table>
+<tbody>
+<tr>
+<td class="gutter">
+<pre><span class="line">1<br></span></pre>
+</td>
+<td class="code">
+<pre><span class="line">npm run build<br></span></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>ok 到这里打包就都结束了。</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/axl234/category/583763.html" target="_blank">js技术</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(5795337,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow('84064696-dee6-e311-8d02-90b11c0b17d6');" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="//common.cnblogs.com/images/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="//common.cnblogs.com/images/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/axl234/" target="_blank"><img src="//pic.cnblogs.com/face/638350/20140624152155.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/axl234/">axl234</a><br>
+            <a href="http://home.cnblogs.com/u/axl234/followees">关注 - 7</a><br>
+            <a href="http://home.cnblogs.com/u/axl234/followers">粉丝 - 31</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow('84064696-dee6-e311-8d02-90b11c0b17d6');return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(5795337,'Digg')">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit" onclick="votePost(5795337,'Bury')">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/axl234/p/5794863.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/axl234/p/5794863.html" title="发布于2016-08-22 11:11">Babel6.x 转换ES6</a><br><a href="http://www.cnblogs.com/axl234/p/5799572.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/axl234/p/5799572.html" title="发布于2016-08-23 15:31">看漫画，学 Redux</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2016-08-22 14:01</span> <a href="http://www.cnblogs.com/axl234/">axl234</a> 阅读(<span id="post_view_count">230</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=5795337" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(5795337);return false;">收藏</a></div>
+	</div>
+
