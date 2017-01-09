@@ -1,4 +1,6 @@
 
+<!--done-->
+<div id="topics">
 	<div class="post">
 		<h1 class="postTitle">
 			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/axl234/p/5795337.html">ES6的模块化</a>
@@ -242,51 +244,5 @@
 </tbody>
 </table>
 <p>&nbsp;</p>
-<p>ok 到这里打包就都结束了。</p></div><div id="MySignature"></div>
-<div class="clear"></div>
-<div id="blog_post_info_block">
-<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/axl234/category/583763.html" target="_blank">js技术</a></div>
-<div id="EntryTag"></div>
-<div id="blog_post_info"><div id="green_channel">
-        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(5795337,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
-            <a id="green_channel_follow" onclick="follow('84064696-dee6-e311-8d02-90b11c0b17d6');" href="javascript:void(0);">关注我</a>
-    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
-    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="//common.cnblogs.com/images/icon_weibo_24.png" alt=""></a>
-    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="//common.cnblogs.com/images/wechat.png" alt=""></a>
-</div>
-<div id="author_profile">
-    <div id="author_profile_info" class="author_profile_info">
-            <a href="http://home.cnblogs.com/u/axl234/" target="_blank"><img src="//pic.cnblogs.com/face/638350/20140624152155.png" class="author_avatar" alt=""></a>
-        <div id="author_profile_detail" class="author_profile_info">
-            <a href="http://home.cnblogs.com/u/axl234/">axl234</a><br>
-            <a href="http://home.cnblogs.com/u/axl234/followees">关注 - 7</a><br>
-            <a href="http://home.cnblogs.com/u/axl234/followers">粉丝 - 31</a>
-        </div>
-    </div>
-    <div class="clear"></div>
-    <div id="author_profile_honor"></div>
-    <div id="author_profile_follow">
-                <a href="javascript:void(0);" onclick="follow('84064696-dee6-e311-8d02-90b11c0b17d6');return false;">+加关注</a>
-    </div>
-</div>
-<div id="div_digg">
-    <div class="diggit" onclick="votePost(5795337,'Digg')">
-        <span class="diggnum" id="digg_count">0</span>
-    </div>
-    <div class="buryit" onclick="votePost(5795337,'Bury')">
-        <span class="burynum" id="bury_count">0</span>
-    </div>
-    <div class="clear"></div>
-    <div class="diggword" id="digg_tips">
-    </div>
 </div>
 </div>
-<div class="clear"></div>
-<div id="post_next_prev"><a href="http://www.cnblogs.com/axl234/p/5794863.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/axl234/p/5794863.html" title="发布于2016-08-22 11:11">Babel6.x 转换ES6</a><br><a href="http://www.cnblogs.com/axl234/p/5799572.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/axl234/p/5799572.html" title="发布于2016-08-23 15:31">看漫画，学 Redux</a><br></div>
-</div>
-
-
-		</div>
-		<div class="postDesc">posted @ <span id="post-date">2016-08-22 14:01</span> <a href="http://www.cnblogs.com/axl234/">axl234</a> 阅读(<span id="post_view_count">230</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=5795337" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(5795337);return false;">收藏</a></div>
-	</div>
-
